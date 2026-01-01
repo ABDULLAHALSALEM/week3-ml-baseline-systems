@@ -52,5 +52,42 @@ uv run pytest
 - passing tests (`tests/`)
 - updated `reports/model_card.md` (filled in)
 - updated `reports/eval_summary.md` (filled in)
+- Model artifacts under `models/runs/<run_id>/`
 
 See `architecture.md` for minimum requirements + stretch goals.
+
+## How to run
+
+### 1) Generate sample data
+```bash
+uv run ml-baseline make-sample-data
+```
+
+## Train the model
+
+```bash
+uv run ml-baseline train --target is_high_value
+```
+## Prepare inference input (remove target column)
+
+```bash
+Import-Csv "data/processed/features.csv" |
+Select-Object user_id, country, n_orders, avg_amount, total_amount |
+Export-Csv -NoTypeInformation "data/processed/features_infer.csv"
+```
+## Run prediction
+
+```bash
+uv run ml-baseline predict --run latest --input data/processed/features_infer.csv --output outputs/preds.csv
+```
+
+## Run tests
+
+```bash
+uv run pytest
+```
+
+## Artifacts
+- Trained models and metadata: `models/runs/`
+- Latest run pointer: `models/registry/latest.txt`
+- Predictions output: `outputs/preds.csv`

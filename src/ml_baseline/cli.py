@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import json
+# ruff: noqa: B008
 import logging
 from pathlib import Path
 from typing import Optional
@@ -66,7 +66,9 @@ def predict(
     run: str = typer.Option("latest", "--run", help="'latest' or a path to a run dir."),
     input: Path = typer.Option(..., "--input", exists=True, help="Input CSV/Parquet."),
     output: Path = typer.Option(Path("outputs/preds.csv"), "--output", help="Output path."),
-    threshold: float | None = typer.Option(None, "--threshold", help="Override decision threshold (classification)."),
+    threshold: float | None = typer.Option(
+        None, "--threshold", help="Override decision threshold (classification)."
+    ),
 ) -> None:
     """Batch predict using a saved run."""
     paths = Paths.from_repo_root()

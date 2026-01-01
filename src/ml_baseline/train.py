@@ -97,7 +97,9 @@ def run_train(cfg: TrainConfig, *, root: Path | None = None) -> Path:
         train_df, test_df = time_split(df, time_col=cfg.time_col, test_size=cfg.test_size)
     else:
         assert cfg.group_col, "group split requires --group-col"
-        train_df, test_df = group_split(df, group_col=cfg.group_col, test_size=cfg.test_size, seed=cfg.seed)
+        train_df, test_df = group_split(
+            df, group_col=cfg.group_col, test_size=cfg.test_size, seed=cfg.seed
+        )
 
     # X/y (drop target and IDs)
     drop_cols = [cfg.target, *id_cols_present]
@@ -140,7 +142,8 @@ def run_train(cfg: TrainConfig, *, root: Path | None = None) -> Path:
     holdout_input = X_test.copy()
     if id_cols_present:
         holdout_input = pd.concat(
-            [test_df[id_cols_present].reset_index(drop=True), holdout_input.reset_index(drop=True)], axis=1
+            [test_df[id_cols_present].reset_index(drop=True), holdout_input.reset_index(drop=True)],
+            axis=1,
         )
     holdout_input_path = run_dir / "tables" / f"holdout_input{ext}"
     write_tabular(holdout_input, holdout_input_path)
@@ -157,7 +160,9 @@ def run_train(cfg: TrainConfig, *, root: Path | None = None) -> Path:
 
         metrics = classification_metrics(y_true, y_score, threshold)
         metrics["positive_rate_holdout"] = float(y_true.mean())
-        metrics["roc_auc_ci"] = bootstrap_ci(y_true, y_score, lambda a, b: float(roc_auc_score(a, b)))
+        metrics["roc_auc_ci"] = bootstrap_ci(
+            y_true, y_score, lambda a, b: float(roc_auc_score(a, b))
+        )
 
         preds = pd.DataFrame({"score": y_score, "prediction": (y_score >= threshold).astype(int)})
         if id_cols_present:
@@ -169,7 +174,9 @@ def run_train(cfg: TrainConfig, *, root: Path | None = None) -> Path:
         y_true = np.asarray(y_test).astype(float)
 
         metrics = regression_metrics(y_true, y_pred)
-        metrics["mae_ci"] = bootstrap_ci(y_true, y_pred, lambda a, b: float(mean_absolute_error(a, b)))
+        metrics["mae_ci"] = bootstrap_ci(
+            y_true, y_pred, lambda a, b: float(mean_absolute_error(a, b))
+        )
 
         preds = pd.DataFrame({"prediction": y_pred})
         if id_cols_present:
