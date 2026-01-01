@@ -91,3 +91,8 @@ uv run pytest
 - Trained models and metadata: `models/runs/`
 - Latest run pointer: `models/registry/latest.txt`
 - Predictions output: `outputs/preds.csv`
+
+## figures
+
+## Images 1
+![This is an alt text.](reports\figures\run-d2.png)
