@@ -111,5 +111,17 @@ uv run pytest
 ## Images 6
 ![This is an alt text.](reports/figures/d52.png)
 
+## Images 7
+![This is an alt text.](reports/figures/Figure_WEEK3.png)
+
+
+## Images 8
+![This is an alt text.](reports/figures/Figure_WEEK31.png)
+
+## Images 9
+![This is an alt text.](reports/figures/Figure_WEEK33.png)
+
+
+
 
 
