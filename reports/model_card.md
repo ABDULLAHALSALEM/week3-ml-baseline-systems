@@ -13,7 +13,7 @@
   - `avg_amount`
   - `total_amount`
 - **Dataset hash (sha256)**:  
-  `bce383b3c7a6501454b05be84208fa2880d2f005f186ca71f54da25fcd5b6aed` :contentReference[oaicite:0]{index=0}
+  `bce383b3c7a6501454b05be84208fa2880d2f005f186ca71f54da25fcd5b6aed` 
 
 ## Splits
 - **Holdout strategy**: Random split
