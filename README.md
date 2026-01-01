@@ -95,21 +95,21 @@ uv run pytest
 ## figures
 
 ## Images 1
-![This is an alt text.](reports\figures\run-d2.png)
+![This is an alt text.](reports/figures/run-d2.png)
 ## Images 2
-![This is an alt text.](reports\figures\run-d3.png)
+![This is an alt text.](reports/figures/run-d3.png)
 
 ## Images 3
-![This is an alt text.](reports\figures\d4.png)
+![This is an alt text.](reports/figures/d4.png)
 
 ## Images 4
-![This is an alt text.](reports\figures\d5.png)
+![This is an alt text.](reports/figures/d5.png)
 
 ## Images 5
-![This is an alt text.](reports\figures\d15.png)
+![This is an alt text.](reports/figures/d15.png)
 
 ## Images 6
-![This is an alt text.](reports\figures\d52.png)
+![This is an alt text.](reports/figures/d52.png)
 
 
 
